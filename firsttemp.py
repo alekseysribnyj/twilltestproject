@@ -2,9 +2,8 @@ from twill.commands import *
 from twill import *
 from twill import namespaces
 def test():
-    browser = get_browser()
     url = "http://clients.sribnyj.com.ua/test/"
-    browser.go(url)
+    go(url)
     formclear('1')
     fv("1", "UserLogin", "aleksey")
     fv("1", "UserPassword", "aleksey")
