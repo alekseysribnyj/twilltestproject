@@ -1,0 +1,6 @@
+{%if CustomErrors%}{%for error in CustomErrors%}<font color="red">{{error}}</font><br>{%endfor%}{%endif%}
+<form name="RegisterForm" method="POST" action="{{abslturl}}/register/">
+{{ form.as_p }}
+<input type="submit" value="Login"/>
+</form>
+
