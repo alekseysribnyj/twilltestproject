@@ -9,23 +9,23 @@ from testsite.mainapp.models import UserProfile
 
 def index(request):
     #Index page. Output menu
-    PageContent = CustomReturnToResponse('main.tpl',
+    PageContent = CustomReturnToResponse('main.html',
          {"abslturl": ReturnAbsoluteUrl()})
-    return render_to_response('index.tpl',
+    return render_to_response('index.html',
         {'PageTitle': 'Main Page', 'PageContent': PageContent})
 
 
 def forgot(request):
     #Forgot password form and it's processing
     return password_reset(request,
-                          template_name='resetpassword/form.tpl',
-                          email_template_name= 'resetpassword/email.tpl',
+                          template_name='resetpassword/form.html',
+                          email_template_name= 'resetpassword/email.html',
                           post_reset_redirect='/forgot/done/')
 
 
 def forgot_message(request):
     #Output message. Shown after successful forgot password processing
-    return render_to_response('index.tpl',
+    return render_to_response('index.html',
         {'PageTitle': 'Login', 'PageContent': "Please check your mail"})
 
 
@@ -65,8 +65,8 @@ def login(request):
     else:
         form = LoginForm()
     Content["form"] = form
-    PageContent = CustomReturnToResponse('loginform.tpl', Content)
-    return render_to_response('index.tpl',
+    PageContent = CustomReturnToResponse('loginform.html', Content)
+    return render_to_response('index.html',
             {'PageTitle': 'Login', 'PageContent': PageContent})
 
 
@@ -116,6 +116,6 @@ def register(request):
 
     Content["form"] = form
     Content["abslturl"] = ReturnAbsoluteUrl()
-    PageContent = CustomReturnToResponse('registerform.tpl', Content)
-    return render_to_response('index.tpl',
+    PageContent = CustomReturnToResponse('registerform.html', Content)
+    return render_to_response('index.html',
             {'PageTitle': 'Register', 'PageContent': PageContent})

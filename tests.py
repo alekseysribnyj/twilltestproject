@@ -10,12 +10,12 @@ def test_login_success():
     fv("1", "UserLogin", "aleksey22")
     fv("1", "UserPassword", "aleksey22")
     submit()
-    try:
-        find("Valid", "m")
-    except:
-        assert False
-    else:
-        assert True
+    #try:
+    find("Valid", "m")
+    #except:
+    #    assert False
+    #else:
+    #    assert True
 
 
 def test_login_incorrect_password():
@@ -42,12 +42,12 @@ def test_login_incorrect_username():
     fv("1", "UserLogin", "1aleksey")
     fv("1", "UserPassword", "1")
     submit()
-    try:
-        find("wrong login", "m")
-    except:
-        assert False
-    else:
-        assert True
+    #try:
+    find("wrong login", "m")
+    #except:
+    #    assert False
+    #else:
+    #    assert True
 
 
 def test_register_and_login():
@@ -62,24 +62,20 @@ def test_register_and_login():
     fv("1", "UserPassword", Password)
     fv("1", "UserEmail", Email)
     submit()
-    try:
-        find("been registered", "m")
-    except:
-        assert False
-    else:
+    #try:
+    find("been registered", "m")
+   # except:
+   #     assert False
+   # else:
         #Login
-        url = "http://localhost:8000/login/"
-        go(url)
-        formclear('1')
-        fv("1", "UserLogin", Login)
-        fv("1", "UserPassword", Password)
-        submit()
-        try:
-            find("Valid", "m")
-        except:
-            assert False
-        else:
-            assert True
+    url = "http://localhost:8000/login/"
+    go(url)
+    formclear('1')
+    fv("1", "UserLogin", Login)
+    fv("1", "UserPassword", Password)
+    submit()
+    find("Valid", "m")
+
 
 
 def test_forgot_password():
@@ -89,12 +85,8 @@ def test_forgot_password():
     formclear('1')
     fv("1", "email", "aleksey@aleksey.com")
     submit()
-    try:
-        find("check your mail", "m")
-    except:
-        assert False
-    else:
-        assert True
+    find("check your mail", "m")
+
 
 
 def test_get_new_password():
@@ -104,9 +96,4 @@ def test_get_new_password():
     fv("1", "new_password1", Login)
     fv("1", "new_password2", Password)
     submit()
-    try:
-        find("password has been set")
-    except:
-        assert False
-    else:
-        assert True
+    find("password has been set")
