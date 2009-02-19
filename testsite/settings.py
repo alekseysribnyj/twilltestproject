@@ -3,6 +3,7 @@ import os
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -11,7 +12,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASE_ENGINE = 'sqlite3'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = os.path.dirname(__file__)+'\\regdb.sqlite'             # Or path to database file if using sqlite3.
+DATABASE_NAME = SITE_ROOT+'/regdb.sqlite'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'root'             # Not used with sqlite3.
 DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
@@ -67,7 +68,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'testsite.urls'
 
 TEMPLATE_DIRS = (
-    os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/')
+    os.path.join(SITE_ROOT, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -82,7 +83,7 @@ INSTALLED_APPS = (
     'testsite.mainapp'
 )
 
-SITE_URL = 'http://localhost:8000'
+SITE_URL = 'http://192.168.2.7:8000'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = '1025'
 AUTH_PROFILE_MODULE = 'mainapp.UserProfile'
